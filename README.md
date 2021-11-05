@@ -7,7 +7,7 @@ Simple app made of Kotlin and Spring Boot
 Simply:
 
 ```shell
-$ http localhost:8080/hello
+$ http localhost:8080/hello/greetings
 
 HTTP/1.1 200
 Connection: keep-alive
@@ -17,14 +17,15 @@ Keep-Alive: timeout=60
 Transfer-Encoding: chunked
 
 {
-    "data": "Hello, world"
+  "appStartedAt": "2021-11-05T11:30:05.019459Z",
+  "data": "Hello, world"
 }
 ```
 
 or, with `user` query param:
 
 ```shell
-$ http "http://localhost:8080/hello?user=Philip"
+$ http "http://localhost:8080/hello/greetings?user=Philip"
 
 HTTP/1.1 200
 Connection: keep-alive
@@ -34,6 +35,7 @@ Keep-Alive: timeout=60
 Transfer-Encoding: chunked
 
 {
-    "data": "Hello, Philip"
+  "appStartedAt": "2021-11-05T11:30:05.019459Z",
+  "data": "Hello, Philip"
 }
 ```

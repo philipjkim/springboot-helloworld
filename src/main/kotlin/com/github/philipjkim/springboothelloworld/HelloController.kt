@@ -10,7 +10,7 @@ import java.time.ZoneId
 import java.time.ZonedDateTime
 
 @RestController
-@RequestMapping("/")
+@RequestMapping("/hello")
 class HelloController {
 
     private val appStartedAt = ZonedDateTime.now(ZoneId.of("+0"))
@@ -19,9 +19,12 @@ class HelloController {
     @GetMapping("/ping")
     fun ping() = ResponseEntity.ok(mapOf("appStartedAt" to appStartedAt))
 
-    @GetMapping("/hello")
+    @GetMapping("/greetings")
     fun hello(@RequestParam("user") user: String?) =
-        mapOf("data" to "Hello, ${user ?: "world"}")
+        mapOf(
+            "data" to "Hello, ${user ?: "world"}",
+            "appStartedAt" to appStartedAt.toString(),
+        )
             .also { logger.info("response => $it") }
             .let { ResponseEntity.ok(it) }
 }
